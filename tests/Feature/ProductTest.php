@@ -166,11 +166,14 @@ class ProductTest extends TestCase
      */
     public function test_an_invalid_product_is_not_found()
     {
-        $response = $this->getJson('api//product/invalid-id', headers :[
+        $response = $this->postJson('api/product/invalid-id', headers :[
             'Authorization' => 'Bearer ' . $this->getToken()
         ]);
 
         $response->assertStatus(404);
+        $response->assertExactJson([
+            'message' => 'Resource not found'
+        ]);
     }
 
     /**
