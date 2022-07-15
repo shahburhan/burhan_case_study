@@ -19,7 +19,7 @@ class ProductTest extends TestCase
      *
      * @return void
      */
-    public function test_a_required_product_data_is_validated()
+    public function test_all_required_product_data_is_validated()
     {
         $response = $this->postJson('api/products', [
         ], [
