@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +22,10 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('/product/{product}', 'ProductController@show')->middleware('auth:sanctum');
     Route::delete('/product/{product}', 'ProductController@destroy')->middleware('auth:sanctum');
     Route::get('/products', 'ProductController@index')->middleware('auth:sanctum');
+
+    //Cart Endpoints
+    Route::post('/cart/{product}', 'CartController@store')->middleware('auth_session:sanctum');
+    Route::put('/cart/{cart}', 'CartController@update')->middleware('auth_session:sanctum');
+    Route::delete('/cart/{cart}', 'CartController@destroy')->middleware('auth_session:sanctum');
+    Route::get('/cart', 'CartController@index')->middleware('auth_session:sanctum');
 });
