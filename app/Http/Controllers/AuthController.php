@@ -17,6 +17,10 @@ class AuthController extends Controller
     {
         //Attempt to login user with validated request data
         if (auth()->attempt($request->validated())) {
+
+            //Add same session cart to logged in user
+            CartController::associateSessionCartWithUser();
+
             return response()->json($this->getToken());
         }
 
