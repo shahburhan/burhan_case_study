@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::namespace('App\Http\Controllers')->group(function () {
+    //Auth Endpoints
+    Route::post('/auth/login', 'AuthController');
 
-Route::post('/auth/login', 'App\Http\Controllers\AuthController');
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    //Product Endpoints
+    Route::post('/products', 'ProductController@store')->middleware('auth:sanctum');
+    Route::post('/product/{product}', 'ProductController@show')->middleware('auth:sanctum');
+    Route::delete('/product/{product}', 'ProductController@destroy')->middleware('auth:sanctum');
+    Route::get('/products', 'ProductController@index')->middleware('auth:sanctum');
 });

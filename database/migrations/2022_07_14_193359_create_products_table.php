@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('price');
             $table->bigInteger('category_id');
             $table->text('description');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
         });
     }
 
