@@ -127,6 +127,7 @@ class ProductTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee(1);
+        $this->assertDatabaseMissing('products', ['id' => $product->id]);
     }
 
     /**
