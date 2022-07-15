@@ -6,9 +6,12 @@ use Tests\TestCase;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
+use Tests\Concerns\DummyProduct;
 
 class CartTest extends TestCase
 {
+    use DummyProduct;
+
     /**
      * A session or user is available
      *
@@ -31,7 +34,9 @@ class CartTest extends TestCase
      */
     public function test_a_product_can_be_added_to_cart()
     {
-        $response = $this->postJson('api/cart/' . Product::first()->id, [
+        $product  = $this->createDummyProduct();
+
+        $response = $this->postJson('api/cart/' . $product->id, [
             'qty'        => 1
         ], headers: [
             'Authorization' => 'Bearer ' . $this->getToken()
@@ -50,7 +55,9 @@ class CartTest extends TestCase
      */
     public function test_a_product_cannot_be_added_to_cart_without_quantity()
     {
-        $response = $this->postJson('api/cart/' . Product::first()->id, headers: [
+        $product  = $this->createDummyProduct();
+
+        $response = $this->postJson('api/cart/' . $product->id, headers: [
             'Authorization' => 'Bearer ' . $this->getToken()
         ]);
 
@@ -141,6 +148,7 @@ class CartTest extends TestCase
     /**
      * Supplying 0 as quantity does not add a product to cart
      *
+     * @depends test_products_in_cart_can_be_retrieved
      * @return void
      */
     public function test_adding_zero_quantity_does_not_add_product_to_cart()
@@ -158,6 +166,7 @@ class CartTest extends TestCase
     /**
      * Quantity is always an integer
      *
+     * @depends test_products_in_cart_can_be_retrieved
      * @return void
      */
     public function test_quantity_is_always_an_integer()
@@ -209,6 +218,7 @@ class CartTest extends TestCase
     /**
      * Cart works with a session
      *
+     * @depends test_products_in_cart_can_be_retrieved
      * @return voidgetJson
      */
     public function test_adding_to_cart_works_with_a_session()

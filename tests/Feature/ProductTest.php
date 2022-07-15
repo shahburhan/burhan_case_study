@@ -5,14 +5,14 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\Category;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Tests\Concerns\DummyProduct;
 
 class ProductTest extends TestCase
 {
-    use WithFaker;
+    use WithFaker, DummyProduct;
 
     /**
      * Test a product data is validated
@@ -175,33 +175,6 @@ class ProductTest extends TestCase
         $response->assertExactJson([
             'message' => 'Resource not found'
         ]);
-    }
-
-    /**
-     * Create a dummy product
-     *
-     * @return Product
-     */
-    public function createDummyProduct()
-    {
-        $category = Category::create([
-            'name' => $this->faker()->safeColorName()
-        ]);
-        $user = User::create([
-            'name'     => $this->faker()->name(),
-            'email'    => $this->faker()->email(),
-            'password' => $this->faker()->password()
-        ]);
-
-        $product = Product::create([
-            'name'        => $this->faker()->text(20),
-            'user_id'     => $user->id,
-            'category_id' => $category->id,
-            'description' => $this->faker()->realText(),
-            'price'       => $this->faker()->numberBetween(1, 999),
-        ]);
-
-        return $product;
     }
 
     public function getToken()
