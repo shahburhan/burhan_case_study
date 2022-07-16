@@ -11,13 +11,13 @@
 ## Endpoints
 | Module | Method | Endpoint |
 | ------ | ------ | ------ |
-| Auth | POST |  /auth/login | 
-| Products | POST |  /products | 
-| Products | GET |  /products | 
-| Products | POST |  /products/{id} | 
-| Products | DEL |  /products/{id} | 
-| Cart | POST |  /cart | 
-| Cart | PUT |  /cart/{id} | 
-| Cart | DEL |  /cart/{id} | 
-| Cart | GET |  /cart | 
+| Auth | POST |  /api/auth/login | 
+| Products | POST |  /api/products | 
+| Products | GET |  /api/products | 
+| Products | POST |  /api/products/{id} | 
+| Products | DEL |  /api/products/{id} | 
+| Cart | POST |  /api/cart | 
+| Cart | PUT |  /api/cart/{id} | 
+| Cart | DEL |  /api/cart/{id} | 
+| Cart | GET |  /api/cart | 
 
