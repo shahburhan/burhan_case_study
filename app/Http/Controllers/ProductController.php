@@ -56,6 +56,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        //Delete items in cart for this product
+        CartController::deleteForProduct($product);
+        
         return $product->delete();
     }
 

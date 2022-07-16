@@ -91,4 +91,15 @@ class CartController extends Controller
         }
         return true;
     }
+
+    /**
+     * Delete cart items for given product
+     *
+     * @param Product $product
+     * @return void
+     */
+    public static function deleteForProduct(Product $product)
+    {
+        return Cart::where('product_id', $product->id)->delete();
+    }
 }
