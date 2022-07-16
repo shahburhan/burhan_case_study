@@ -1,7 +1,7 @@
 # Case Study
 ---
 
-## Project Seup
+## Project Setup
 - Clone the repository
 - Run composer install
 - Setup database in env
