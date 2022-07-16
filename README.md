@@ -242,7 +242,7 @@ Method : *POST* (I usually use get for such requests but POST was mentioned in t
 Curl Example
 
 ```
-curl --location --request POST 'http://localhost/burhan-case-study/public/api/product/1' \
+curl --location --request POST 'http://{base_url}/api/product/1' \
 
 --header 'Accept: application/json' \
 
@@ -275,7 +275,7 @@ Method : *DELETE*
 Curl Example
 
 ```
-curl --location --request DELETE 'http://localhost/burhan-case-study/public/api/product/1' \
+curl --location --request DELETE 'http://{base_url}/api/product/1' \
 
 --header 'Accept: application/json' \
 
@@ -301,7 +301,7 @@ Data : qty as param
 Curl Example
 
 ```
-curl --location --request POST 'http://localhost/burhan-case-study/public/api/cart/2?qty=1' \
+curl --location --request POST 'http://{base_url}/api/cart/2?qty=1' \
 
 --header 'Accept: application/json' \
 
@@ -333,7 +333,7 @@ Data : qty as param
 Curl Example
 
 ```
-curl --location --request PUT 'http://localhost/burhan-case-study/public/api/cart/2?qty=3' \
+curl --location --request PUT 'http://{base_url}/api/cart/2?qty=3' \
 
 --header 'Accept: application/json' \
 
@@ -363,7 +363,7 @@ Method : *DELETE* (please make note, the id in url is of cart and not product)
 Curl Example
 
 ```
-curl --location --request DELETE 'http://localhost/burhan-case-study/public/api/cart/2' \
+curl --location --request DELETE 'http://{base_url}/api/cart/2' \
 
 --header 'Accept: application/json' \
 
@@ -389,7 +389,7 @@ Data : email, password as params
 Curl Example
 
 ```
-curl --location --request GET 'http://localhost/burhan-case-study/public/api/cart' \
+curl --location --request GET 'http://{base_url}/api/cart' \
 
 --header 'Accept: application/json' \
 
@@ -446,7 +446,7 @@ If a user is not logged in, cart can still be used using session id. All the abo
 Curl Example
 
 ```
-curl --location --request POST 'http://localhost/burhan-case-study/public/api/cart/2?qty=2' \
+curl --location --request POST 'http://{base_url}/api/cart/2?qty=2' \
 
 --header 'Accept: application/json' \
 
