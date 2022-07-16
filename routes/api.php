@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::namespace('App\Http\Controllers')->group(function () {
+Route::namespace('App\Http\Controllers')->middleware('api')->group(function () {
     //Auth Endpoints
     Route::post('/auth/login', 'AuthController');
 
